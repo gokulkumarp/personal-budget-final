@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.budget,
+.expense,
+.addBudget {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+  padding: .75rem .875rem;
+  border-radius: 4px;
+  outline: 0px;
+  color: black;
+  font-size: .875rem;
+  width: 100%;
+  border: .063rem solid #b0bec5;
+  
+}

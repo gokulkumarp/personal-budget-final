@@ -1,0 +1,13 @@
+.contain{
+    width: 1000px; margin: 0 auto;
+  }
+
+  #budexp{
+    position: absolute;
+    right: 0;
+    padding-bottom: 10px;
+  }
+
+  #budchar{
+  
+  }
