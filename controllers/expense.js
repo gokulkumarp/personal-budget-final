@@ -55,7 +55,7 @@ exports.readById = (req, res,next) => {
 
 
   exports.monthlyReport = (req, res,next) => { 
-    Expense.find((error, data) => {
+    Expense.find({userId: req.user.id},(error, data) => {
         if (error) {
             return next(error)
         } else {

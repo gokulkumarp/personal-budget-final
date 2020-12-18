@@ -1,7 +1,11 @@
 let Budget = require('../models/Budget');
+const { v4: uuidv4 } = require('uuid');
+
 
 
 exports.create = (req, res,next) => {
+  req.body.id = uuidv4();
+  req.body.userId = req.user.id;
     Budget.create(req.body, (error, data) => {
         if (error) {
             return next(error)
@@ -14,7 +18,7 @@ exports.create = (req, res,next) => {
 
 
 exports.read = (req, res,next) => {
-  Budget.find((error, data) => {
+  Budget.find({userId: req.user.id},(error, data) => {
       if (error) {
           return next(error)
       } else {
@@ -22,6 +26,15 @@ exports.read = (req, res,next) => {
       }
   })
 }
+exports.readById = (req, res,next) => { 
+  Budget.find((error, data) => {
+      if (error) {
+          return next(error)
+      } else {
+          res.json(data)
+      }
+  })
+};
 
 exports.monthBudget = (req, res, next)=>{
     Budget.aggregate(
@@ -45,16 +58,4 @@ exports.monthBudget = (req, res, next)=>{
         }
       );
 }
-
-// router.route('/month/chart').get((req, res, next) => {
-//     const month = new Date().getMonth();
-//     const year = parseInt(2020);
-//     Budget.find((error, data) => {
-//         if (error) {
-//             return next(error)
-//         } else {
-//             res.json(data)
-//         }
-//     })
-//   });
 

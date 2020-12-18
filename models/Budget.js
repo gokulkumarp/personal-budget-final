@@ -12,6 +12,12 @@ let userSchema = new Schema({
       type: Date,
       required: true,
     },
+    userId:{
+        type: String 
+    },
+    id:{
+        type: String 
+    },
     capacity:{
         
             type:Number,
