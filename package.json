@@ -30,10 +30,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
     "test": "jest --coverage",
     "eject": "react-scripts eject",
-    "server": "node server.js"
+    "client": "npm start --prefix client",
+    "server": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix client && npm run build --prefix client"
   },
   "eslintConfig": {
     "extends": [

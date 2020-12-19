@@ -56,5 +56,5 @@
   "devDependencies": {
     "eslint-plugin-prettier": "^3.2.0"
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "https://personalbudgetproj.herokuapp.com/"
 }

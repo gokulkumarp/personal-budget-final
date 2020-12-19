@@ -1,11 +1,9 @@
-let url = 'mongodb://localhost:27017/final_budget'
-
-
 let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 const compression = require("compression");
+let path = require("path");
 
 
 
@@ -19,7 +17,7 @@ require('dotenv').config();
 
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(url, {
+  .connect(process.env.MONGO_DB, {
     useNewUrlParser: true
 }).then(() => {
     console.log('Database connected sucessfully !')
@@ -41,8 +39,16 @@ app.use(compression());
 app.use('/api/budget',authToken, budgetRoute)
 app.use('/api/expense',authToken, expenseRoute)
 app.use('/api/auth', authRoute);
-
 const port = process.env.PORT || 4000;
+
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+    app.get("*", (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
+app.use(express.static("public"));
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
