@@ -31,9 +31,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "start-server-and-test start 3000 cy:open",
     "eject": "react-scripts eject",
-    "server": "node server.js"
+    "server": "node server.js",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +55,10 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "^3.2.0"
+    "eslint-plugin-prettier": "^3.2.0",
+    "@applitools/eyes-cypress": "^3.16.3",
+    "cypress": "^6.1.0",
+    "start-server-and-test": "^1.11.6"
   },
   "proxy": "https://personalbudgetproj.herokuapp.com/"
 }
